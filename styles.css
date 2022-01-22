@@ -96,13 +96,13 @@
 }
 
 .copy {
-  height: 30px;
+  height: 25px;
   width: auto;
   align-items: right;
   border-style: groove;
-  border-radius: 2px;
+  border-radius: 5px;
   border-color: green;
-  font-size: 15px;
+  font-size: 12px;
   margin: 3px 3px 3px 3px;
 }
 
@@ -119,4 +119,6 @@
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  border-style: groove;
+  border-radius: 6px;
 }
