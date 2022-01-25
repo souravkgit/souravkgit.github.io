@@ -80,17 +80,16 @@ body {
 }
 .options.small{
   display: table-cell;
-  width: 50%;
+  width: 50vw;
   position: relative;
   flex-direction: column;
   flex-wrap: nowrap;
   text-align: center;
   justify-content: center;
-  width: 50%;
   height: 40%;
 }
 .genrate.small{
-  width: 1200px;
+  width: 50vw;
   display: table;
   position: relative;
 }
@@ -165,4 +164,11 @@ body {
 
 .items.small{
   display:table-row;
+  width: 100vw;
 }
+
+/* @media screen and (max-width:600px) {
+  .asklen{
+    width: 100;
+  }
+} */
