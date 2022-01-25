@@ -91,109 +91,167 @@ function shuffle(array) {
 
 // Main code starts from here for android users..
 if (window.innerWidth < 500) {
-  var height = 150;
-
-  // Giving the typing effect to the text displaying on the screen...
-  document
-    .querySelector("#desc")
-    .setAttribute("style", "height:" + height + "px;");
-  var str =
-    "This is very simple tool to get a very strong as well as very easy password of desired length in just seconds.";
-  var empt = "";
-  var index = 0;
-  setInterval(() => {
-    if (index < str.length) {
-      empt += str[index];
-      document.getElementById("desc").innerHTML = empt;
-      index += 1;
-    }
-  }, 40);
-
-  // Declaring all the functions to select the desired characters , user wants in there password..
-  function upper() {
-    var classs = document.getElementById("text1").className;
-    document.getElementById("text1").classList.toggle("text1-selected");
-    if (classs == "text1") uplet = 1;
-    else uplet = 0;
+  height = 150;
+} 
+else if (window.innerWidth >= 500 && window.innerWidth < 1000) {
+  height = 80;
+} 
+else if (window.innerWidth >= 1000) {
+  height = 50;
+  chek = document.getElementsByClassName('items')
+  el = chek[0];
+  if (!el.classList.contains('small')){
+      el.classList.toggle('small');
   }
-
-  function lower() {
-    var classs = document.getElementById("text3").className;
-    document.getElementById("text3").classList.toggle("text2-selected");
-    if (classs == "text3") lowlet = 1;
-    else lowlet = 0;
+  chek = document.getElementsByClassName('options')
+  el = chek[0];
+  if (!el.classList.contains('small')){
+      el.classList.toggle('small');
   }
-
-  function nums() {
-    var classs = document.getElementById("text2").className;
-    document.getElementById("text2").classList.toggle("text3-selected");
-    if (classs == "text2") num = 1;
-    else num = 0;
+  chek = document.getElementsByClassName('genrate')
+  el = chek[0];
+  if (!el.classList.contains('small')){
+      el.classList.toggle('small');
   }
-
-  function special() {
-    var classs = document.getElementById("text4").className;
-    document.getElementById("text4").classList.toggle("text4-selected");
-    if (classs == "text4") spc = 1;
-    else spc = 0;
+  chek = document.getElementsByClassName('slider')
+  el = chek[0];
+  if (!el.classList.contains('large')){
+      el.classList.toggle('large');
   }
-
-  // Main code to generate the password and display it on the screen...
-  function Genrate() {
-
-    amount = document.getElementById("myRange").value;
-
-    var pass = "";
-    var mixed = [];
-
-    // Checking the characters user wants and then displaying them accordingly...
-    if (uplet == 1) {
-      for (let i = 0; i < upperletr.length; i++) {
-        const element = upperletr[i];
-        mixed.push(element);
-      }
-    }
-
-    if (lowlet == 1) {
-      for (let index = 0; index < lowerletr.length; index++) {
-        const element = lowerletr[index];
-        mixed.push(element);
-      }
-    }
-
-    if (num == 1) {
-      for (let index = 0; index < numbers.length; index++) {
-        const element = numbers[index];
-        mixed.push(element);
-      }
-    }
-
-    if (spc == 1) {
-      for (let index = 0; index < speciallet.length; index++) {
-        const element = speciallet[index];
-        mixed.push(element);
-      }
-    }
-
-    // Shuffling the created array for better results...
-    mixed = shuffle(mixed);
-    var mixlen = mixed.length;
-
-    // Creating the password of desired length using that shuffled array...
-    for (let index = 0; index < amount; index++) {
-      use = Math.floor(Math.random() * mixlen);
-      pass += mixed[use];
-    }
-
-    // Displaying the password on the screen...
-    document.getElementById("myInput").setAttribute("value", pass);
-  }
-
-  // Function to let user copy the password in just one click...
-  function myFunction() {
-    var copyText = document.getElementById("myInput");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(copyText.value);
+  chek = document.getElementsByClassName('count')
+  el = chek[0];
+  if (!el.classList.contains('small')){
+      el.classList.toggle('small');
   }
 }
+
+// Giving the typing effect to the text displaying on the screen...
+document.querySelector("#desc").setAttribute("style", "height:" + height + "px;");
+var str =
+  "This is very simple tool to get a very strong as well as very easy password of desired length in just seconds.";
+var empt = "";
+var index = 0;
+setInterval(() => {
+  if (index < str.length) {
+    empt += str[index];
+    document.getElementById("desc").innerHTML = empt;
+    index += 1;
+  }
+}, 40);
+
+// Declaring all the functions to select the desired characters , user wants in there password..
+function upper() {
+  chek = document.getElementsByClassName('text1')
+  el = chek[0];
+  if (!el.classList.contains('selected')){
+      el.classList.toggle('selected');
+      uplet = 1;
+  }
+  else {
+    el.classList.toggle('selected');
+    uplet = 0;
+  }
+}
+
+function lower() {
+  chek = document.getElementsByClassName('text3')
+  el = chek[0];
+  if (!el.classList.contains('selected')){
+      el.classList.toggle('selected');
+      lowlet = 1;
+  }
+  else {
+    el.classList.toggle('selected');
+    lowlet = 0;
+  }
+}
+
+function nums() {
+  chek = document.getElementsByClassName('text2')
+  el = chek[0];
+  if (!el.classList.contains('selected')){
+      el.classList.toggle('selected');
+      num = 1;
+  }
+  else {
+    el.classList.toggle('selected');
+    num = 0;
+  }
+}
+
+function special() {
+  chek = document.getElementsByClassName('text4')
+  el = chek[0];
+  if (!el.classList.contains('selected')){
+      el.classList.toggle('selected');
+      spc = 1;
+  }
+  else {
+    el.classList.toggle('selected');
+    spc = 0;
+  }
+}
+
+// Main code to generate the password and display it on the screen...
+function Genrate() {
+  amount = document.getElementById("myRange").value;
+  if (amount==0){
+    return;
+  }
+  var pass = "";
+  var mixed = [];
+  if (uplet==0 && lowlet==0 && num==0 && spc==0){
+    return;
+  }
+  // Checking the characters user wants and then displaying them accordingly...
+  if (uplet == 1) {
+    for (let i = 0; i < upperletr.length; i++) {
+      const element = upperletr[i];
+      mixed.push(element);
+    }
+  }
+
+  if (lowlet == 1) {
+    for (let index = 0; index < lowerletr.length; index++) {
+      const element = lowerletr[index];
+      mixed.push(element);
+    }
+  }
+
+  if (num == 1) {
+    for (let index = 0; index < numbers.length; index++) {
+      const element = numbers[index];
+      mixed.push(element);
+    }
+  }
+
+  if (spc == 1) {
+    for (let index = 0; index < speciallet.length; index++) {
+      const element = speciallet[index];
+      mixed.push(element);
+    }
+  }
+
+  // Shuffling the created array for better results...
+  mixed = shuffle(mixed);
+  var mixlen = mixed.length;
+
+  // Creating the password of desired length using that shuffled array...
+  for (let index = 0; index < amount; index++) {
+    use = Math.floor(Math.random() * mixlen);
+    pass += mixed[use];
+  }
+
+  // Displaying the password on the screen...
+  document.getElementById("myInput").setAttribute("value", pass);
+}
+
+// Function to let user copy the password in just one click...
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+}
+
+
